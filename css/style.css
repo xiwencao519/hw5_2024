@@ -1,0 +1,120 @@
+/* Keyframes for animating the logo: it grows from 25px to 475px in width 
+   and fades in from opacity 0 to 1 over 5 seconds. */
+@keyframes logogrow{
+    from{
+        width: 25px;
+        opacity: 0;
+    }
+    to{
+        width: 475px;
+        opacity: 1;
+    } 
+}
+#logo{
+    animation-name: logogrow;
+    animation-duration: 5s;
+}
+body{
+    font-family: "Poppins", serif;
+    background-color: #f1f1f1; 
+    background-image: url("/images/concrete_seamless.png");
+}
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /*Make it centered horizontally and vertically*/
+}
+.nav_links{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+a:visited{
+    color: blue;
+}
+.card>header{
+    background-color: #288088;
+    border: 2px solid #45adad;
+    padding: 20px 0;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px; /*Set the border radius for boths carder>header and card to make it look same as the sample*/
+}
+.card{
+    flex-basis: 450px;
+    border-top-left-radius: 50px;/*Set the border radius for boths carder>header and card to make it look same as the sample*/
+    border-top-right-radius: 50px;
+}
+.pricing{
+    display: flex;
+    flex-direction: row; /*Make sure the width of the element can be defined by using the row*/
+    justify-content: center;
+    flex-wrap: wrap; 
+}
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.gallery img{
+    border: 10px solid #50C7C7;
+    width: 300px;
+    margin: 10px;
+}
+
+@media screen and (min-width: 900px) { /*screen bigger than 900px*/
+    header{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .nav_links{
+        display: flex;
+        flex-direction: row;
+    }
+    .card{
+        flex-basis: 275px;
+    }
+    .pricing{
+        align-items: center;
+    }
+    header:not(main header){ /*Make the header stay at the same position when scroll down*/
+        position: sticky;
+        top: 0;
+    }
+}
+@media all and (prefers-reduced-motion:reduce){
+    #logo{
+        animation: none;
+    }
+}
+@media print{
+    body{
+        font-family: Arial, Helvetica;
+        background-image: none;
+    }
+    nav{
+        width: 100%; /*Make sure there are enough space for the links*/
+    }
+    .nav_links{
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .pricing{
+        align-items: flex-end;
+        flex-wrap: nowrap;
+    }
+    .card{
+        border: 2px solid #45ADDD;
+        flex-basis: 325px;
+    }
+    .gallery{
+        display: none; /*Make all the gallery element disappear */
+    }
+    #gallery{
+        display: none;
+    }
+    .card li:nth-child(2)::after{ /*Add this thumb up at the end of second list*/
+        content:"👍";
+    }
+}
